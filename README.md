@@ -1,15 +1,24 @@
-# Developer Knowledge MCP
+# Avinash Verma Portfolio MCP
 
-A small, deployable MCP server for searching developer documentation and engineering notes.
+A public, read-only MCP server that lets ChatGPT and other MCP-compatible assistants retrieve professional information from Avinash Verma's portfolio.
 
-## Stack
-- Python 3.12
-- FastAPI + MCP Python SDK (Streamable HTTP transport)
-- ChromaDB local persistent vector store for development
-- Sentence Transformers embeddings
-- Vercel Python functions for the HTTP API
+## Tools
+- `get_profile` — professional summary and public links
+- `get_skills` — portfolio-listed technical skills
+- `get_projects` — project descriptions, demos and repositories
+- `search_portfolio` — keyword search across the public portfolio data
 
-## Run locally
+## Endpoints
+- `/mcp` — MCP Streamable HTTP endpoint
+- `/health` — health check
+- `/privacy` — privacy policy
+- `/terms` — terms of use
+
+## Source
+Portfolio: https://avinash-verma.netlify.app/
+Portfolio source repository: https://github.com/avi-verma-web/avi-portfolio-parcel
+
+## Local development
 ```bash
 python -m venv .venv
 source .venv/bin/activate
@@ -17,13 +26,4 @@ pip install -r requirements.txt
 uvicorn api.index:app --reload
 ```
 
-## MCP endpoint
-When running locally: `http://localhost:8000/mcp`
-
-## Important deployment note
-Vercel's serverless filesystem is ephemeral and function execution is bounded. The included local Chroma persistence is for development/testing, not durable production storage. Before using this with persistent user data, connect a hosted vector database and object storage. Keep secrets in environment variables.
-
-## API
-- `GET /health` — health check
-- `POST /documents` — ingest a text document
-- MCP tools: `search_docs`, `list_documents`, `delete_document`
+The server is read-only. It does not use embeddings, a vector database, authentication, or persistent user storage.
