@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Any
 
 from fastapi import FastAPI
-from fastmcp import FastMCP
+from mcp.server.fastmcp import FastMCP
 
 PORTFOLIO_URL = "https://avinash-verma.netlify.app/"
 GITHUB_URL = "https://github.com/avi-verma-web"
